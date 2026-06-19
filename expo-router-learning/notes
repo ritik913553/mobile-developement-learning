@@ -1,0 +1,115 @@
+ctrl + spacebar ---->for suggesstions
+
+expo-router
+This works on the file based routing system like nextjs
+
+src/app
+app folder ke andr jitne bhi file/folder honege wo sb route ke jaisa treat hoga
+
+    /app folder ke bahr jo bhi bnayenge wo sb treat hoga as a coponent
+
+
+
+    1/statis route. -----> normal route jo ki hum app ke andr bnate hai jaise index ,about,ya profile folder ke andr details ye sb me varibale nhi hai direct name bne hai.
+    2 Dynamic route ---> the  route that accepts a varibale value
+               file name rhega [userId].tsx aisa measn userId is variable
+
+
+     same folder level pe ek se jyda dynamic route rkhne se conflict aayega
+      jab bhi dynamic route bana hai to folder ke ander banw aur ek folde me ek hi ye nest practice hai
+
+      useLocalSearchParams()
+
+catch-all concept ------>[...slug ]
+
+\_layout.tsx
+wrapper for all the siblings
+
+Slot component ----> like outlet component in react router
+
+Assignment ---->read about "router" object and "useRouter" hook that is imported fromt the expo -router
+
+//==================================================================
+
+route groups ----> (folder_name) - Parentheses `()` me folder name rakhne se wo URL path me segment add nahi karta. - URL structure clean rakhne aur routes ko organize karne ke liye use hota hai. - Har route group ka apna alag `_layout.tsx` ho sakta hai jo sirf usi group ke screens pe apply hoga.
+
+     Example:
+     Agar humare paas ye folder structure hai:
+     app/
+     ├── (auth)/
+     │   ├── _layout.tsx
+     │   ├── login.tsx
+     │   └── signup.tsx
+     └── (main)/
+         ├── _layout.tsx
+         ├── home.tsx
+         └── profile.tsx
+
+     URLs aise banenge:
+     - `app/(auth)/login.tsx`   ----> `/login` (not `/auth/login`)
+     - `app/(auth)/signup.tsx`  ----> `/signup`
+     - `app/(main)/home.tsx`    ----> `/home`
+     - `app/(main)/profile.tsx` ----> `/profile`
+
+     Benefits:
+     1. Isse hum `(auth)` ke liye alag layout (jaise no tab bar, custom header) aur `(main)` ke liye alag layout (jaise tab bar nav) use kar sakte hain, bina URL paths ko change kiye.
+     2. Group ke andar generic file names use kar sakte hain bina sibling routes ko affect kiye.
+
+     Nested & Global Layouts (Important):
+     - Route groups use karne ke baad bhi global/root layout (`app/_layout.tsx`) kaam karega aur wrapper rahega.
+     - Global layout sabse top-most parent hota hai jo pure app ke screens/groups ke upar apply hota hai (e.g., Context Providers, Theme, or Global state).
+     - Route group ke layouts (`app/(auth)/_layout.tsx`) global layout ke andar nest (embed) hote hain.
+
+     Rendering Hierarchy:
+     Root/Global Layout (app/_layout.tsx)
+       └── Route Group Layout (app/(auth)/_layout.tsx)
+             └── Screen (app/(auth)/login.tsx)
+
+//==================================================================
+
+Protected Routes (<Stack.Protected>) - **Introduction:** Expo Router v5+ (Expo SDK 53+) ka declarative component hai jo screen/route protection ko easy banata hai. - **Concept:** Bina manual redirects (`router.replace`) ya nested layout hook checks ke screens ko declarative guard provide karta hai. - **`guard` Prop (Boolean):** - `guard={true}` -> Access allowed. - `guard={false}` -> Access blocked, automatically redirect ho jayega. - **Key Features:** - **Auto-Redirection:** Agar condition fail hoti hai, to user anchor screen (usually index `/`) pe redirect ho jata hai. - **History Cleanup:** Logout hone par (guard changing from true to false), restricted routes navigation stack se automatically clear/remove ho jate hain. - **Deep Linking Safety:** Directly link open karne par bhi guard checks enforce hote hain.
+
+     Example:
+     ```tsx
+     import { Stack } from "expo-router";
+
+     export default function RootLayout() {
+       const isAuth = true; // global auth state
+
+       return (
+         <Stack>
+           {/* Unauthenticated routes */}
+           <Stack.Protected guard={!isAuth}>
+             <Stack.Screen name="(auth)" options={{ headerShown: false }} />
+           </Stack.Protected>
+
+           {/* Authenticated routes */}
+           <Stack.Protected guard={isAuth}>
+             <Stack.Screen name="index" />
+             <Stack.Screen name="about" />
+           </Stack.Protected>
+         </Stack>
+       );
+     }
+     ```
+
+//==================================================================
+Tabs
+
+    1.js tabs (de fault tab )
+    2.native tabs
+        unstable now (is in alpha)
+        it gives the support of native ui like for iphone it gives glass ui etc
+
+    3.custom tabs
+            state. ------->all availabe tbas,current tabs
+            descriptors. -----> screen options
+            navigation. ---->move between screens/tabs
+
+npx expo start --clear ----> clear all cache and then start
+
+Splash screens
+
+Assignment
+1.expo router vs react native --> which one should use in 2026
+2.How instagram,whatsapp,Uber,Netflix would be build today using Expo router

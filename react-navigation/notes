@@ -1,0 +1,60 @@
+command for create expo app
+        npx create-expo-app -t blank-typescript@sdk-55
+
+
+<!-- setup of react-navigation  -->
+    https://reactnavigation.org/docs/getting-started  (go here and follow instruction of installing)
+
+npm install @react-navigation/native-stack
+npm install @react-navigation/elements
+
+
+
+When using React Navigation, you need to  configure navigators in your app. Navigators handle transitions between screens and provide UI such as headers, tab bars, etc.
+
+
+<!-- Static vs Dynamic navigation  -->
+static ---> screens are declared in one config object
+
+Stack
+Tab
+Drawer
+
+
+1.Stack 
+    navigation ke methods 
+            .navigate() ---> go to the screen by name
+            .goBack()    ----> go to back stacked screen
+            .push()    ----> same scrren ko multiple times stack me add kr skte hai  (mtlb agr hum home me hai and then click kiye ja rhe to multiple instance add hoga stack me lekin yhi kam agr hum navigate se krte to nhi hota).  ---> Always add a new instanse
+
+            .replace() ------->replace current screen, means user previous screen pe (back) nhi ja sk ta 
+            .popToTop()
+            .popTo()
+
+
+//initial values kaise bhej skte hai (this is reserved keyword)??
+
+stack navigator vs native stack navigator
+
+
+
+//useLayoutEffect ke bare me pdhna hai 
+ useLayoutEffect(() => {
+    navigation.setOptions({
+      title: "Ritik",
+    });
+  }, [navigation]);
+
+
+
+animation option in the screenOptions
+
+
+
+2.Tabs
+     Bottom Tab
+     Top Tab 
+
+icons library
+      npx expo install @expo/vector-icons
+
