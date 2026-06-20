@@ -1,0 +1,28 @@
+react native. --> UI
+
+Expo ---> full stack framework of react-native that help to build fronted(UI + Routing) as well as backend(backend routes + database + server logic) of app.
+
+    Expo backend --> jyda flexible nhi hota hai(like nodejs and fastapi ki trha) ,ye basically claude flare ke workers pe deploy hote hai (edge network pe)
+
+using fetch we can do api call in expo jaise web pe krte hai regularly
+
+==============================================
+
+Expo API Routes
+File Naming Conventiaon --> file_name+api.ts
+
+after build ,ui part and backend (api) part dono alg ho jate hai
+
+expo api routes ----> worked on serverless architecture (connection 30-60 sec tk hi rhta hai )
+
+Serverless friendly database. (What it mean ?)
+1.Turso
+2.neon
+3.planetscale
+4.supabase
+
+//Read about @ import mtlb khi bhi lgate hai @/lib/db aisa import krne time
+
+expo api routes ko tb use kro jb aap koi 3rd party api ko use kr rhe ho apne app me
+and agr khud ka banana hai backend to expo api ki jgha khud ka custom backend rkho nodejs fastapi ye sb me
+ 
