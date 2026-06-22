@@ -1,0 +1,189 @@
+AsyncStorage
+SecureStore (secure data handling)
+SQLite (local database)
+FileSystem (file handling)
+
+
+
+https://gregarious-gray-075.notion.site/Data-Storage-Offline-Support-369c3158e38d80528978f188265c9ff2
+
+
+
+
+
+
+expo-ui // hero ui ----->   like shadcn in mobile app
+
+
+
+1.AsyncStorage
+    npx expo install @react-native-async-storage/async-storage
+    @react-native-async-storage/async-storage
+    AsyncStorage is basically the app’s simple local key-value storage.
+
+
+    Why “Async”Storage?
+
+
+        Because reading/writing from device storage is not instant like a normal JS variable.
+
+         persistent data (chae app close ho,app reload ho,device restart ho off ho )
+
+        So these functions return Promises:
+
+        await AsyncStorage.setItem(...)
+        await AsyncStorage.getItem(...)
+
+        That’s why the name is AsyncStorage.
+
+
+        npx expo install @react-native-async-storage/async-storage---> why installation done with expo in command ,because it is so smart that it automatically install krega compaitable version ko jo ki expo ka current version hogha uske hisab se
+
+
+        Usecase
+            User's Preferences
+            Onboarding Screens
+            Store users data
+
+
+
+            Async Storage can only store string data. In order to store object data, you need to serialize it first. For data that can be serialized to JSON, you can use JSON.stringify() when saving the data and JSON.parse() when loading the data.
+
+                Importing¶  
+
+                import AsyncStorage from '@react-native-async-storage/async-storage';
+                Storing data¶
+                setItem() is used both to add new data item (when no data for given key exists), and to modify existing item (when previous data for given key exists).
+
+                Storing string value¶
+
+                const storeData = async (value) => {
+                try {
+                    await AsyncStorage.setItem('my-key', value);
+                } catch (e) {
+                    // saving error
+                }
+                };
+                Storing object value¶
+
+                const storeData = async (value) => {
+                try {
+                    const jsonValue = JSON.stringify(value);
+                    await AsyncStorage.setItem('my-key', jsonValue);
+                } catch (e) {
+                    // saving error
+                }
+                };
+                Reading data¶
+                getItem returns a promise that either resolves to stored value when data is found for given key, or returns null otherwise.
+
+                Reading string value¶
+
+                const getData = async () => {
+                try {
+                    const value = await AsyncStorage.getItem('my-key');
+                    if (value !== null) {
+                    // value previously stored
+                    }
+                } catch (e) {
+                    // error reading value
+                }
+                };
+                Reading object value¶
+
+                const getData = async () => {
+                try {
+                    const jsonValue = await AsyncStorage.getItem('my-key');
+                    return jsonValue != null ? JSON.parse(jsonValue) : null;
+                } catch (e) {
+                    // error reading value
+                }
+                };
+
+    Limitation of Async Storage 
+        1.Not encrypted 
+        2.Only stores string
+        3. Not good for large dataset
+
+
+
+2.Secure Storage  (secure data handling )
+
+        npx expo install expo-secure-store
+
+        `SecureStore` is a secure storage system provided by Expo for storing sensitive data safely inside mobile applications.
+
+        Unlike AsyncStorage, SecureStore encrypts the data before saving it on the device. 
+
+
+        /internal implementation of ios and android for store data securly 
+        ios ----> keychain
+        android---> key stores
+    
+    Limitation
+        1.Slower than AsyncStorage
+        2.Not good for large dataset
+        3.Limited storage size
+        4.Web Support is limited
+
+
+3.expo  SQlite
+npx expo install expo-sqlite
+
+
+    `SQLite` is a lightweight local database used for storing structured data inside mobile applications.
+
+    Unlike AsyncStorage, SQLite stores data in:
+
+    - tables
+    - rows
+    - columns
+
+    just like a real SQL database.
+
+
+
+
+4.Expo file System 
+    npx expo install expo-file-system
+
+    `expo-file-system` is a module provided by Expo that allows us to interact with the device’s local file system.
+
+    Using FileSystem we can:
+
+    - create files
+    - read files
+    - write files
+    - copy/move/delete files
+    - upload files
+    - download files
+    - manage folders/directories
+
+    It works on:
+
+    - Android
+    - iOS
+    - Web (limited support)
+
+
+
+
+
+
+
+
+
+
+
+read about sql-lite (sql injection)
+Ably is service in supabase that is use for chating applications 
+
+Assignment 
+    Sync local sqlite database with  claude database (like turso) 
+    push-on demand
+    pull-on demand 
+
+read about CNG in react native
+
+
+pick file from your device and show that in your app 
