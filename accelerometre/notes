@@ -1,0 +1,17 @@
+Expo Sensors
+A library that provides access to a device's accelerometer, barometer, motion, gyroscope, light, magnetometer, and pedometer.
+
+
+
+Flow for use any Sensors
+1.Availabe or not
+2.subscribe that so that app can continously listen that sensor data
+3.get that data 
+
+
+
+Assignments
+1.Read about sensor fusion 
+2.can we build iphone effect of screenshot ,like 3 tab in  back then automatic screenshot happen 
+
+
