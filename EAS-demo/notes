@@ -1,0 +1,107 @@
+For Development Build
+
+benefit ye hai development build pe jane se ki ,saare feature expo go app me nhi hota ,to un sb se realted project banne ke liye hame development build pe jana hi pdega so that ki natively access kr ske wo ,like camera ,haptics etc.
+
+1.install CLI
+You can use EAS Command-Line Interface (CLI) to build, update, submit, deploy or use workflows in your Expo and React Native project from a terminal window.
+
+    npm install --global eas-cli
+
+    COMMANDS (start with eas then following suffix)
+            analytics     display or change analytics settings
+            autocomplete  Display autocomplete installation instructions.
+            build         start a build
+            config        display project configuration (app.json + eas.json)
+            credentials   manage credentials
+            deploy        deploy your Expo Router web build and API Routes
+            diagnostics   display environment info
+            help          Display help for eas.
+            init          create or link an EAS project
+            login         log in with your Expo account
+            logout        log out
+            new           Create a new project configured with Expo Application Services (EAS)
+            onboarding    continue onboarding process started on the https://expo.new website.
+            open          open the project page in a web browser
+            submit        submit app binary to App Store and/or Play Store
+            update        publish an update group
+            upload        upload a local build and generate a sharable link
+            whoami        show the username you are logged in as
+
+2.need to login
+eas login
+check login by--- eas whoami
+
+3.for build run this command ---> this will create a project in expo dashboard
+eas build:configure
+and do yes then choose option
+✅ iOS & Android: create a new standalone app from this project
+then it will give u the link u can open it in browser and there u have a dashboard for that project
+eas.json ---> file created in the project ,in build there is 3 options ->development,preview,production
+
+4.run command for build
+eas build --profile development --platform android
+
+        tab for default name of app build
+        then yer for key gen
+
+5.build finish hone ke bad dashboard me install pe click krne se qr code aayega usko scan krne se phone pe download krne ka option aayega waha se aap donwlod kr ke khol skte hai
+
+6.then when u start the application by npm stat then by pressing 's' u can switch b/w expo go to your development build app
+then press a to open that in android
+then aap real time me update kr skte ho and wo sb apke app me dikhega
+
+<!-- For Preview Build -->
+
+diff kya hai development build se --> usko share nhi kr skte apk ke jaisa but preview build ko kr skte hai share apk file ke roop me ,for qaa testing,client dmeo etc
+similar to production
+shareable
+developemt wale me dev client ka chlte rhna jruri hai kyuki update ye sb ho rha but isme nhi hai jriro
+
+1.go to the eas.json file and add android in preview
+"preview": {
+"distribution": "internal",
+"android": {
+"buildType": "apk"
+}
+},
+
+2.run command
+eas build --profile preview --platform android
+
+How to setup production build locally ,without the help of eas build service of expo
+
+# ------------------------------------------
+
+Binary
+
+apk/aab. -----> android package kit / android app bundle
+ipa ---> ios app archive
+
+<!-- ------------------------------- -->
+
+Multiple app variant
+
+--> problem ye hai ki aap ek sath alg alg type ka ek hi aap nhi chla skte means if u want to run preview ,developemnt ,production all type app in same device i,ye nhi ho skta ek device pe ek type ka hi chlega kyuki app-id sbka same hi rhta hai ,is problem ko solve krne ke liye hi multiple aap variant use hota hai
+
+Solurion for android is application-id
+
+convert app.json to app.config.ts
+
+also after this step need to create build
+
+<!--
+
+
+
+
+ -->
+<!-- Over the top/air updates -->
+
+1.npx expo install expo-updates 2. eas update:configure
+it will add a feild called "channel":"developemnt" /"preview" / "production" in eas.json inside build,production,and preview
+
+then again create build
+
+then u can send updated by this command ---> eas update --channel preview --message "Fix login button alignment"
+
+Assignment -> update on Demand by using expo-updates library ,like if new update is availabe then show a pop up in app that update is available if user click on update then update the app otherwise not
