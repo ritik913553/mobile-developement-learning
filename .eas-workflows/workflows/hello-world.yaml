@@ -1,0 +1,12 @@
+name: Hello World
+
+on:
+  push:
+    branches: ["main"]
+  
+
+jobs:
+  Hello World:
+    steps:
+        - run: echo "Hello World"
+        - run: echo "hello Ritik"

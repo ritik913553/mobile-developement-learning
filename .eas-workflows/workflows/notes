@@ -1,0 +1,28 @@
+create workdlows/name.yaml
+and write the yaml file all steps n all ,basically write deployment workflows
+then go tot he eas expo dashboard -- connect github there and search for repo and connect thru the repo
+during repo connection u can specify the specific path inside the repo
+
+then in bottom there is button for get started simply click ans start that time it will provide multiple command run that locally
+
+after successful connectioon u just need to push code then automatic workflow will run in the expo environment
+
+u need 14,to 12 testers(people) jiske phone me app installed rhe and wo use krte rhe daily basis pe 14 days ke liye tb approve hoga
+
+how to publish the app
+1.create production build by running command that will prepeare in expo
+2.download that (it will be in the aab format)
+3.go to google play console dashboard
+4.and create new app uplod your production build
+
+<!-- ------------
+
+
+-->
+
+u can also use eas submit for direclty upload build in play store using expo
+
+u can get google account key (that is required for eas submit process ) from google cloud console and create new project there
+search for google play android developer api
+
+come back and add user and permissions in google play console

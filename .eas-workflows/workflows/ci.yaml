@@ -1,0 +1,16 @@
+name: CI Check
+
+on:
+  push: 
+    branches: ["main"]
+
+jobs: 
+  typecheck:
+    steps:
+      - uses: eas/checkout
+      - uses: eas/install_node_modules
+      - run: npx expo lint
+      - run: npx expo typecheck
+
+
+# "uses" ka tb use krna hai jb apko "expo"  ke prebuild actions ka use krna hai 
